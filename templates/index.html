@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+    <h2>Welcome!</h2>
+    <p>You are logged in.</p>
+    {% if session.get('samlUserdata') %}
+        <h3>User Attributes:</h3>
+        <ul>
+        {% for key, value in session['samlUserdata'].items() %}
+            <li><strong>{{ key }}:</strong> {{ value[0] }}</li>
+        {% endfor %}
+        </ul>
+    {% endif %}
+    <a href="{{ url_for('logout') }}">Logout</a>
+</body>
+</html>
